@@ -1,6 +1,6 @@
 {
   "name": "@bounceprotect/mcp",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "mcpName": "io.github.fahasann00/bounceprotect",
   "description": "Email validation and SMTP verification for AI assistants. Validate emails directly inside Claude Desktop, Cursor, and Claude Code.",
   "type": "module",
