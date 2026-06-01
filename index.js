@@ -380,10 +380,20 @@ function formatDeepAnalysisResults(data) {
     lines.push(
       `🏢 ${row.domain ?? "unknown"} — Score: ${row.business_legitimacy_score ?? "?"}/100 | Website: ${row.has_website ?? false} | SSL: ${row.has_ssl ?? false} | Parked: ${row.is_parked ?? false}`,
     );
-    if (row.org_matched) {
-      lines.push(
-        `   Org: ${row.org_name ?? "Unknown"} | ${row.org_industry ?? "?"} | ${row.org_employee_size ?? "?"} employees | ${row.org_country ?? "?"} | ${row.org_linkedin_url ?? "No LinkedIn"}`,
-      );
+    const orgParts = [];
+    if (row.org_name) orgParts.push(row.org_name);
+    if (row.org_industry) orgParts.push(row.org_industry);
+    if (row.org_employee_size) orgParts.push(`${row.org_employee_size} employees`);
+    if (row.org_year_founded) orgParts.push(`founded ${row.org_year_founded}`);
+    if (row.org_country) orgParts.push(row.org_country);
+    if (orgParts.length > 0) {
+      lines.push(`   Company: ${orgParts.join(" | ")}`);
+    }
+    if (row.org_linkedin_url) {
+      lines.push(`   LinkedIn: ${row.org_linkedin_url}`);
+    }
+    if (row.mail_provider) {
+      lines.push(`   Mail provider: ${row.mail_provider}`);
     }
   }
 
